@@ -7,7 +7,8 @@ local XPlane11SteamId = "269950"
 function update_rpc()
     dataref("aircraft", "sim/aircraft/view/acf_descrip", "readable")
     dataref("kias", "sim/flightmodel/position/indicated_airspeed", "readable")
-    dataref("alt", "sim/cockpit2/gauges/indicators/altitude_ft_pilot", "readable")
+    dataref("alt", "sim/flightmodel/position/elevation", "readable")
+    alt = alt * 3.28084 -- convert m to ft
     discordRPC.updatePresence({
         ["details"] = aircraft,
         ["state"] = math.floor(alt) .. "ft MSL @ " .. math.floor(kias) .. "kias",
